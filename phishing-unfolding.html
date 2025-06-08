@@ -179,7 +179,7 @@ Everything began with a suspicious email alert that i got. Here we can see the <
               </div>
               <h3 class="project-details__content-title">Checking the Attachment</h3>
               <p class="project-details__desc-para">
-After opening the <code>ImportantInvoice-February.zip</code> on the analyst VM, I saw the <code>invoice.pdf.lnk</code> file. Knowing that these shortcut files can be tricky and often hide malicious commands, my immediate thought was to grab its file hashes. I used <code>PowerShell</code> to get the <code>SHA256</code> and <code>MD5</code> hashes of <code>invoice.pdf.lnk</code>. This way, I can quickly check these hashes against threat intelligence platforms to see if anyone else has seen this file before and if it's known to be bad. It's a quick way to get some initial context.</p>              <div class="project-details__img-cont">
+My first goal was clear, i wanted to analyze this attachment. After opening the <code>ImportantInvoice-February.zip</code> on the analyst VM, I saw the <code>invoice.pdf.lnk</code> file. Knowing that these shortcut files can be tricky and often hide malicious commands, my immediate thought was to grab its file hashes. I used <code>PowerShell</code> to get the <code>SHA256</code> and <code>MD5</code> hashes of <code>invoice.pdf.lnk</code>. This way, I can quickly check these hashes against threat intelligence platforms to see if anyone else has seen this file before and if it's known to be bad. It's a quick way to get some initial context.</p>              <div class="project-details__img-cont">
                 <img
                   src="./assets/SocSim2/2-att.png"
                   alt="Netplan Apply Screenshot"

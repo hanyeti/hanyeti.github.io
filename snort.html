@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Snort</title>
+    <meta name="description" content="Case study page of Phising Unfolding" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
+    <style>
+      .constrained-image {
+        display: block;
+        width: 100%;
+        height: auto;
+        cursor: pointer; /* Add a pointer cursor on hover */
+        transition: transform 0.2s ease;
+      }
+
+      .constrained-image.larger {
+        max-width: 1890px;
+        max-height: 1100px;
+      }
+
+      .constrained-image:hover {
+        transform: scale(1.03);
+      }
+
+      .project-details__img-cont {
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      /* The Modal (background) */
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.9); /* Black with opacity */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Modal Content (image) */
+      .modal-content {
+        /* margin: auto; */
+        display: block;
+        /* width: 80%; */
+        max-width: 90%;
+        max-height: 90%;
+      }
+
+      /* Close Button */
+      .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: color 0.3s;
+        cursor: pointer;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #bbb;
+        text-decoration: none;
+      }
+      code {
+        background-color: #eee; /* Light background for code */
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: 'Source Code Pro', monospace; /* Monospaced font for code */
+        font-size: 0.9em; /* Slightly smaller than surrounding text */
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__content">
+        <div class="header__logo-container">
+          <a href="./index.html">
+            <div class="header__logo-img-cont">
+              <img src="./assets/png/john-doe.png" alt="Ram Maheshwari Logo Image" class="header__logo-img" />
+            </div>
+            <span class="header__logo-sub">HAN YETI</span>
+          </a>
+        </div>
+        <div class="header__main">
+          <ul class="header__links">
+            <li class="header__link-wrapper">
+              <a href="./index.html" class="header__link"> Home </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#about" class="header__link">About </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#projects" class="header__link">
+                Projects
+              </a>
+            </li>
+            <li class="header__link-wrapper">
+              <a href="./index.html#contact" class="header__link"> Contact </a>
+            </li>
+          </ul>
+          <div class="header__main-ham-menu-cont">
+            <img src="./assets/svg/ham-menu.svg" alt="hamburger menu" class="header__main-ham-menu" />
+            <img src="./assets/svg/ham-menu-close.svg" alt="hamburger menu close" class="header__main-ham-menu-close d-none" />
+          </div>
+        </div>
+      </div>
+      <div class="header__sm-menu">
+        <div class="header__sm-menu-content">
+          <ul class="header__sm-menu-links">
+            <li class="header__sm-menu-link">
+              <a href="./index.html"> Home </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#about"> About </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#projects"> Projects </a>
+            </li>
+            <li class="header__sm-menu-link">
+              <a href="./index.html#contact"> Contact </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section class="project-cs-hero">
+      <div class="project-cs-hero__content">
+        <h1 class="heading-primary">Snort Walkthrough (TryHackMe)</h1>
+        <div class="project-cs-hero__info">
+          <p class="text-primary">
+In this room from TryHackMe, I solved each task to get more familiar with an open-source IDS/IPS solution called Snort. I will also put the bullet point notes that I chose from this room.         </p>
+        </div>
+      <!--  <div class="project-cs-hero__cta">
+          <a href="#" class="btn btn--bg" target="_blank">Live Link</a>
+        </div> -->
+      </div>
+    </section>
+    <section class="project-details">
+      <div class="main-container">
+        <div class="project-details__content">
+          <div class="project-details__showcase-img-cont">
+            <img src="./assets/jpeg/project-mockup-example.jpeg" alt="Project Image" class="project-details__showcase-img" />
+          </div>
+          <div class="project-details__content-main">
+            <div class="project-details__desc">
+              <h3 class="project-details__content-title">Overview</h3>
+              <p class="project-details__desc-para">
+During this TryHackMe room, I gained practical experience with Snort, a powerful open-source Intrusion Detection System (IDS) and Intrusion Prevention System (IPS). I explored Snort's various operational modes, including Sniffer, Packet Logger, IDS/IPS, and PCAP investigation. A significant portion of the exercises involved crafting and testing custom Snort rules to detect specific network patterns and anomalies. I learned to configure Snort, analyze its output, and interpret logs to identify malicious activities. This included tasks such as testing different configuration files, reading packet data from log files, and using Snort to investigate PCAP files. I also practiced creating rules based on IP IDs, TCP flags (SYN, PSH-ACK), and identifying UDP packets with identical source and destination IPs.</p>            <div class="project-details__subsections">
+              <h3 class="project-details__content-title">Key Skills Demonstrated</h3>
+              <p class="project-details__desc-para">
+Understanding of IDS/IPS Concepts, Snort Installation and Configuration, Snort Operational Modes, Snort Rule Writing, Log Analysis </p>        
+
+  <!--- ///////////////////////////// --->
+
+
+
+<h4 class="project-details__content-title">What is IDS?</h4>
+<p class="project-details__desc-para"><code>IDS</code> : <code>IDS</code> is a passive monitoring solution for detecting possible malicious activities/patterns, abnormal incidents, and policy violations. It is responsible for generating alerts for each suspicious event. </p>
+<p class="project-details__desc-para">There are two main types of <code>IDS</code> systems;</p>
+<ul>
+    <li class="project-details__desc-para">Network Intrusion Detection System (<code>NIDS</code>)</li>
+    <li class="project-details__desc-para">Host-based Intrusion Detection System (<code>HIDS</code>)</li>
+</ul>
+
+<h4 class="project-details__content-title">What is IPS?</h4>
+<p class="project-details__desc-para"><code>IPS</code> : is an active protecting solution for preventing possible malicious activities/patterns, abnormal incidents, and policy violations. It is responsible for stopping/preventing/terminating the suspicious event as soon as the detection is performed.</p>
+<p class="project-details__desc-para">There are four main types of <code>IPS</code> systems;</p>
+<ul>
+    <li class="project-details__desc-para">Network Intrusion Prevention System (<code>NIPS</code>)</li>
+    <li class="project-details__desc-para">Behaviour-based Intrusion Prevention System (Network Behaviour Analysis - <code>NBA</code>)
+        <ul>
+            <li class="project-details__desc-para">The difference between <code>NIPS</code> and Behaviour-based is that behaviour based systems require a training period (also known as "baselining") to learn the normal traffic and differentiate the malicious traffic and threats.</li>
+        </ul>
+    </li>
+    <li class="project-details__desc-para">Wireless Intrusion Prevention System (<code>WIPS</code>)</li>
+    <li class="project-details__desc-para">Host-based Intrusion Prevention System (<code>HIPS</code>)</li>
+</ul>
+<p class="project-details__desc-para"><code>HIPS</code> working mechanism is similar to <code>HIDS</code>. The difference between them is that while <code>HIDS</code> creates alerts for threats, <code>HIPS</code> stops the threats by terminating the connection.</p>
+              <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/0-ids-ips.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-0"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Detection and Prevention Techniques</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/1-ddt.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-1"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Basic Parameters for Snort</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/2-param.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-2"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Run the Snort instance and check the build number?</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/3-run.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-3"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<p class="project-details__desc-para">Here "<code>-T</code>" is used for testing configuration, and "<code>-c</code>" is identifying the configuration file (<code>snort.conf</code>). Note that it is possible to use an additional configuration file by pointing it with "<code>-c</code>". After running the command we can see that the build number is <code>149</code></p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/4-bn.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-4"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Test the current instance with "<code>/etc/snort/snort.conf</code>" file and check how many rules are loaded with the current build?</h4>
+<p class="project-details__desc-para">In the same output it can be seen.</p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/5-test.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-5"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Test the current instance with "<code>/etc/snort/snortv2.conf</code>" file and check how many rules are loaded with the current build?</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/6-aaa.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-6"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+<h4 class="project-details__content-title">All answers for this task</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/7-task.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-7"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Operation Mode 1: Sniffer Mode</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/8-opmode1.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-8"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Operation Mode 2: Packet Logger Mode</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/9-opmode2.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image9"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/10-opmde2.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-10"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<p class="project-details__desc-para">Now, you should have the logs in the current directory. Navigate to folder "<code>145.254.160.237</code>". What is the source port used to connect port <code>53</code>?</p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/11-udp.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-11"
+                  onclick="showOriginal(this)"
+                />
+              </div>
+              
+<h4 class="project-details__content-title">Use <code>snort.log.1640048004</code> to read the <code>snort.log</code> file with <code>Snort</code>; what is the <code>IP ID</code> of the 10th packet? (<code>snort -r snort.log.1640048004 -n 10</code>)</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/12-read.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-12"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Read the "<code>snort.log.1640048004</code>" file with <code>Snort</code>; what is the <code>referer</code> of the 4th packet? (<code>sudo snort -r snort.log.1640048004 -n 4 -X</code>)</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/13-referrer.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-13"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Read the "<code>snort.log.1640048004</code>" file with <code>Snort</code>; what is the <code>Ack number</code> of the 8th packet? (<code>sudo snort -r snort.log.1640048004 -n 8 -e</code>)</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/14-ack.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-14"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Read the "<code>snort.log.1640048004</code>" file with <code>Snort</code>; what is the number of the "<code>TCP port 80</code>" packets? (<code>sudo snort -r snort.log.1640048004 tcp</code>)</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/15-tcp.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-15"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">All answers for this task</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/16-task.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-16"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Operation Mode 3: IDS/IPS</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/17-op3.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-17"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/18-op3.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-18"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/19-op3.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-19"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">IPS mode and dropping packets</h4>
+<p class="project-details__desc-para"><code>Snort IPS mode</code> activated with <code>-Q --daq afpacket</code> parameters.</p>
+<p class="project-details__desc-para">Activate the <code>Data Acquisition (DAQ)</code> modules and use the <code>afpacket</code> module to use <code>snort</code> as an <code>IPS</code>: </p>
+<ul>
+    <li class="project-details__desc-para"><code>-i eth0:eth1</code></li>
+    <li class="project-details__desc-para"><code>task7</code> -></li>
+    <li class="project-details__desc-para">start the sniffer : </li>
+    <li class="project-details__desc-para"><code>sudo snort -c /etc/snort/snort.conf -A full -l .</code> </li>
+    <li class="project-details__desc-para">start the attack/traffic generator <code>task7</code></li>
+    <li class="project-details__desc-para">after the attack finished terminate the sniff (<code>crtl+c</code>)</li>
+</ul>
+<p class="project-details__desc-para">What is the number of the detected <code>HTTP GET</code> methods?</p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/20-get.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-20"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Operation Mode 4: PCAP Investigation</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/21-opmode4.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-21"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Investigate the <code>mx-1.pcap</code> file with the default configuration file. </h4>
+<p class="project-details__desc-para"><code>sudo snort -c /etc/snort/snort.conf -A full -l . -r mx-1.pcap</code></p>
+<p class="project-details__desc-para">What is the number of the generated alerts? Keep reading the output. How many <code>TCP Segments</code> are Queued? (<code>170</code> and <code>18</code>)</p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/21-alerts.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-211"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Keep reading the output.How many "<code>HTTP response headers</code>" were extracted?</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/21-hhtp.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-212"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Investigate the <code>mx-1.pcap</code> file with the second configuration file.</h4>
+<p class="project-details__desc-para"><code>sudo snort -c /etc/snort/snortv2.conf -A full -l . -r mx-1.pcap</code></p>
+<p class="project-details__desc-para">What is the number of the generated alerts?</p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/22-alert.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-22"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Investigate the <code>mx-2.pcap</code> file with the default configuration file.</h4>
+<p class="project-details__desc-para"><code>sudo snort -c /etc/snort/snort.conf -A full -l . -r mx-2.pcap</code></p>
+<p class="project-details__desc-para">What is the number of the generated alerts?</p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/23-alert.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-23"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Keep reading the output. What is the number of the detected <code>TCP packets</code>?</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/24-tracked.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-24"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Investigate the <code>mx-2.pcap</code> and <code>mx-3.pcap</code> files with the default configuration file.</h4>
+<p class="project-details__desc-para"><code>sudo snort -c /etc/snort/snort.conf -A full -l . --pcap-list="mx-2.pcap mx-3.pcap"</code></p>
+<p class="project-details__desc-para">What is the number of the generated alerts?</p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/25-alerts.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-25"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Snort Rule Structure</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/26-structure.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-26"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/27-rule.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-27"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<p class="project-details__desc-para">Remember, <code>Snort</code> is in passive mode by default. So most of the time, you will use <code>Snort</code> as an <code>IDS</code>. You will need to start "<code>inline mode</code>" to turn on <code>IPS</code> mode. </p>
+
+<h4 class="project-details__content-title">Rule Options</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/28-options.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-28"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">IP and Port Numbers</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/29-ip.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-29"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Direction</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/30-direction.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-30"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<p class="project-details__desc-para">There are three main rule options in <code>Snort</code>;</p>
+<ul>
+    <li class="project-details__desc-para">General Rule Options - Fundamental rule options for <code>Snort</code>. </li>
+    <li class="project-details__desc-para">Payload Rule Options - Rule options that help to investigate the payload data. These options are helpful to detect specific payload patterns.</li>
+    <li class="project-details__desc-para">Non-Payload Rule Options - Rule options that focus on non-payload data. These options will help create specific patterns and identify network issues.</li>
+</ul>
+
+<h4 class="project-details__content-title">General</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/31-general.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-31"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Payload</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/32-payload.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-32"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Non-Payload</h4>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/33-nonp.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-33"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<p class="project-details__desc-para">Remember, once you create a rule, it is a local rule and should be in your "<code>local.rules</code>" file. This file is located under "<code>/etc/snort/rules/local.rules</code>".</p>
+<p class="project-details__desc-para"><code>sudo nano /etc/snort/rules/local.rules</code></p>
+
+<h4 class="project-details__content-title">Use "<code>task9.pcap</code>". Write a rule to filter <code>IP ID "35369"</code> and run it against the given <code>pcap</code> file. What is the request name of the detected packet? You may use this command: "<code>snort -c local.rules -A full -l . -r task9.pcap</code>"</h4>
+<p class="project-details__desc-para">The rule has to be = <code>alert ip any any -> any any (msg:"Detected IP ID 35369"; id:35369; sid:1000001; rev:1;)</code></p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/34-rule.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-34"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<p class="project-details__desc-para"><code>snort -c local.rules -A full -l . -r task9.pcap</code></p>
+<p class="project-details__desc-para"><code>alert.txt</code> file created in the same path</p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/35-alertfile.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-35"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+              
+<p class="project-details__desc-para">It also could be seen with <code>sudo snort -r snort.log.1748778710 -X</code></p>
+
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/36-seen.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-36"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+              
+<h4 class="project-details__content-title">Clear the previous alert file and comment out the old rules. Create a rule to filter packets with <code>Syn flag</code> and run it against the given <code>pcap</code> file. What is the number of detected packets?</h4>
+<p class="project-details__desc-para">The rule has to be = <code>alert tcp any any -> any any (msg:"SYN Flag Detected"; flags:S; sid:1000002; rev:1;)</code></p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/37-syn.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-37"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+              
+<h4 class="project-details__content-title">Clear the previous alert file and comment out the old rules. Write a rule to filter packets with <code>Push-Ack flags</code> and run it against the given <code>pcap</code> file. What is the number of detected packets?</h4>
+<p class="project-details__desc-para">The rule has to be = <code>alert tcp any any -> any any (msg:"PSH-ACK Flag Combination Detected"; flags:PA; sid:1000003; rev:1;)</code></p>
+<p class="project-details__desc-para">It's easy to check from log file generated : <code>sudo snort -r snort.log.1748779533 -X</code></p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/38-check.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-38"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+              
+<h4 class="project-details__content-title">Clear the previous alert file and comment out the old rules. Create a rule to filter <code>UDP packets</code> with the same source and destination <code>IP</code> and run it against the given <code>pcap</code> file. What is the number of packets that show the same source and destination address?</h4>
+<p class="project-details__desc-para">The rule has to be = <code>alert udp any any <> any any (msg:"UDP Packet with Same Source/Dest IP"; sameip; sid:1000004; rev:1;)</code></p>
+<p class="project-details__desc-para"><code>sudo snort -r snort.log.1748780315 -X</code></p>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/39-udp.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-39"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+              
+<h4 class="project-details__content-title">All the answers for this task</h4>
+                <div class="project-details__img-cont">
+                <img
+                  src="./assets/Snort/40-all.png"
+                  alt="Network Configuration Screenshot"
+                  class="constrained-image"
+                  id="image-40"
+                  onclick="showOriginal(this)"
+                />
+               </div>
+
+              
+              
+  <!--- ********************************* --->
+
+              
+  
+            </div>
+            <div class="project-details__tools-used">
+              <h3 class="project-details__content-title">Tools Used</h3>
+              <div class="skills">
+                <div class="skills__skill">Intrusion Detection Systems</div>
+                <div class="skills__skill">Intrusion Prevention System</div>
+                <div class="skills__skill">Snort Installation and Configuration</div>
+                <div class="skills__skill">Snort Operational Modes</div>
+                <div class="skills__skill">Log Analysis</div>
+                <div class="skills__skill">Snort Rule Writing</div>
+              </div>
+            </div>
+          <!--  <div class="project-details__links">
+              <h3 class="project-details__content-title">See Live</h3>
+              <a href="#" class="btn btn--med btn--theme project-details__links-btn" target="_blank">Live Link</a>
+              <a href="#" class="btn btn--med btn--theme-inv project-details__links-btn" target="_blank">Code Link</a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer class="main-footer">
+      <div class="main-container">
+        <div class="main-footer__upper">
+          <div class="main-footer__row main-footer__row-1">
+            <h2 class="heading heading-sm main-footer__heading-sm">
+              <span>Social</span>
+            </h2>
+            <div class="main-footer__social-cont">
+              <a target="_blank" rel="noreferrer" href="https://www.linkedin.com/in/han-yeti/">
+                <img class="main-footer__icon" src="./assets/png/linkedin-ico.png" alt="icon" />
+              </a>
+              <a target="_blank" rel="noreferrer" href="https://github.com/hanyeti">
+                <img class="main-footer__icon" src="./assets/png/github-ico.png" alt="icon" />
+              </a>
+              <!---<a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon" src="./assets/png/twitter-ico.png" alt="icon" />
+              </a>-->
+              <a target="_blank" rel="noreferrer" href="https://www.youtube.com/@HYeti">
+                <img class="main-footer__icon" src="./assets/png/yt-ico.png" alt="icon" />
+              </a>
+              <!---<a target="_blank" rel="noreferrer" href="#">
+                <img class="main-footer__icon main-footer__icon--mr-none" src="./assets/png/insta-ico.png" alt="icon" />
+              </a>-->
+            </div>
+          </div>
+          <div class="main-footer__row main-footer__row-2">
+            <h4 class="heading heading-sm text-lt">Han Yeti</h4>
+            <p class="main-footer__short-desc">
+              Certified Cybersecurity Professional
+            </p>
+          </div>
+        </div>
+       
+      </div>
+    </footer>
+    <div id="image-modal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img id="modal-img" class="modal-content" />
+    </div>
+    <script>
+      const images = document.querySelectorAll('.constrained-image');
+      const modal = document.getElementById("image-modal");
+      const modalImg = document.getElementById("modal-img");
+
+      modal.style.display = "none";
+
+      images.forEach(img => {
+        img.onload = () => {
+          if (img.naturalWidth > 1890 || img.naturalHeight > 1100) {
+            img.classList.add('larger');
+          }
+        };
+        img.onclick = () => showOriginal(img.id);
+      });
+
+      function showOriginal(imgId) {
+        const img = document.getElementById(imgId);
+        modalImg.src = img.src;
+        modal.style.display = "flex";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>
